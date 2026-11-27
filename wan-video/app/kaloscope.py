@@ -25,27 +25,63 @@ What was checked here (2026-11-25, CPU, onnxruntime 1.28)
   a reference probe - a synthetic input with the expected top-5 classes and
   style vector. This module's own run of it matched exactly (same top-5, style
   dot product 1.0). ``self_check`` repeats that on the user's machine.
-* On real work fetched from Danbooru - ten general-rated pictures each by
-  wlop, hiten_(hitenkei) and bkub:
+* **Unseen work** (2026-11-27). Kaloscope 3.0 was published on 2026-10-03,
+  trained on a 2026 Danbooru snapshot, and its own reported accuracy (Top-1
+  88.7%) comes from a development set that was also used to choose the
+  checkpoint. So the test here used only general-rated Danbooru posts
+  uploaded from 2026-10-04 on - none can be in the training data. 60 artists
+  drawn at random from the posts of that window: 15 big (1000+ Danbooru
+  posts), 15 mid (200-999), 15 small (under 200), and 15 the model has never
+  heard of; 492 pictures, comics, monochrome and chibi included. Collaborations,
+  variants of older posts, AI-generated and edited pictures were left out.
 
-  - **One picture** put the right artist first 70-86% of the time, with the
-    occasional wild miss (one bkub picture ranked bkub 12,151st).
-  - **Several pictures pooled** (mean of the probabilities, 200 random
-    subsets): two pictures 92-100%, three or more 99-100%. Averaging the
-    log-probabilities instead was no better, so the plain mean is used.
-  - **Style vectors**: pictures by one artist average 0.60-0.64 cosine with
-    each other; other artists 0.17. Against the *centroid* of several
-    reference pictures a held-out picture by the same artist scores
-    0.75-0.78 (worst case 0.56-0.61, against 0.46-0.51 for a single
-    reference) and other artists 0.21 - a wider, steadier gap, which is why
-    a folder of references makes a better target than one picture.
-  - **Mixed folders show**: wlop and bkub together average 0.38 pairwise;
-    one bkub among nine hiten sat at 0.42 to the centroid while the nine
-    were 0.69-0.90. Over 300 random folders per size, a single intruder
-    was flagged 83% of the time among four pictures and 99-100% among five
-    or more; a clean folder had a picture flagged 0-4% of the time. So the
-    flag is a suggestion with the thumbnail next to it, never an automatic
-    removal.
+  Each artist counts the same, and "pooled" scores every combination of
+  that many pictures of the artist, not a random sample.
+
+  ===========================  ======  ======  ======  ======
+  the right artist is first     big     mid    small   all
+  ===========================  ======  ======  ======  ======
+  one picture                   82%     61%     62%     69%
+  in the top 40 the page shows  95%     86%     80%     87%
+  three pictures pooled         94%     72%     76%     81%
+  five pictures pooled          97%     75%     81%     84%
+  ===========================  ======  ======  ======  ======
+
+  With only 45 known artists the error bars are wide: resampling artists,
+  one picture's 69% could be anything from 59% to 78%. Accuracy is mostly
+  about the artist - 25 of 45 were right 80% of the time or more from one
+  picture, 8 were right 20% or less, and five of those eight stayed wrong
+  even from five pictures.
+
+  - The page's sentence is honest: a top score of 0.5 or more was right 87 of
+    87 times, 0.1-0.5 right 95 of 99; under 0.1 the first answer was right
+    44% of the time. For three-picture folders (every combination): 100%,
+    98% and 55%.
+  - All 100 pictures, and all 724 three-picture combinations, by artists
+    the model does not know got "no clear match" - it never claimed one of
+    them with confidence.
+  - Style vectors: a held-out picture scores 0.59 against one picture by the
+    same artist (10th percentile 0.44) and 0.72 against the centroid of five
+    (10th percentile 0.61); other artists 0.20-0.25. A picture's likeness to
+    its own one-artist folder was 0.65 or more 96.5% of the time.
+  - Folders: 4% of one-artist folders were called "more than one style". One
+    picture by someone else was flagged 68% of the time among four, 86% among
+    five, 90% among six, 96% among eight; a clean folder had a picture
+    flagged 1-5% of the time.
+  - An earlier, smaller test (three famous artists, pictures probably in the
+    training data) gave rosier numbers - 99-100% from three pictures. Those
+    are not repeated anywhere now.
+
+* **AI-generated pictures** are a different matter. 151 NoobAI images from
+  CivitAI whose prompts name artist tags: the prompt's artists came first for
+  1% and within the top five for 5% (top 40: 15%); 145 of 151 got "no clear
+  match", and the six that did not were all wrong. An AI picture "in the style of" an artist is not close enough to
+  that artist's real work for the model to name. Its style vectors still
+  group them, though: AI pictures made with the same artist tags averaged
+  0.62 against 0.30 for ones sharing none (separability 0.97) - so the lab's
+  "one picture per artist, ranked by style" route works on AI targets where
+  naming does not. When the file kept its prompt, artistlab.prompt_artists
+  reads the tags exactly instead.
 
 What it is not
 --------------
@@ -172,11 +208,13 @@ def analyse(image, base: Path, top: int = 30) -> tuple[list[dict], "object"]:
     return ranked(probs, names, top), vector
 
 
-# Measured on real folders (see the module docstring): one artist's pictures
-# average about 0.6 with each other, two artists mixed about 0.37.
+# Measured (see the module docstring): one artist's pictures average about
+# 0.6 with each other (4% of real one-artist folders fall under this line),
+# two artists mixed about 0.37.
 MIXED_BELOW = 0.45
 # ...and a stray picture sits far under the folder's median likeness to the
-# centroid (0.42 against a median of 0.81; the lowest genuine one was 0.16 under).
+# centroid. With this gap, unseen work: caught 86% of the time among five
+# pictures, 96% among eight; a clean folder flagged 1-5% of the time.
 OUTLIER_GAP = 0.22
 MAX_REFERENCES = 60
 
@@ -222,7 +260,8 @@ def consistency(pooled: dict) -> str:
     """Whether the folder really is one style, in a sentence."""
     count, pairwise, outliers = pooled["count"], pooled["pairwise"], pooled["outliers"]
     if count < 2 or pairwise is None:
-        return "只有一張圖。同畫風的圖多放幾張會準很多：三張以上，認對畫師的機率從七八成變成幾乎百分之百。"
+        return ("只有一張圖。同畫風的圖多放幾張會比較準：模型沒看過的作品實測，單張約七成認對，"
+                "三到五張約八成；有名的畫師三張 94%、五張 97%。")
     if outliers:
         return (f"{count} 張裡有 {len(outliers)} 張跟其他的畫風差很多（下面標出來了）。"
                 "拿掉它們再判斷一次會更準。")
@@ -279,14 +318,19 @@ def similarity(a, b) -> float:
 
 
 def confidence(matches: list[dict]) -> str:
-    """One honest line about how much the top answer means."""
+    """One honest line about how much the top answer means.
+
+    The figures are from the unseen test in the module docstring (hand-drawn
+    work; AI pictures almost always land in the last case).
+    """
     top = matches[0]["p"] if matches else 0.0
     if top >= 0.5:
-        return "很明確：畫風高度符合第一名。"
+        return "很明確：第一名幾乎一定是（模型沒看過的手繪作品實測，這種情況 87 張全對）。"
     if top >= 0.1:
-        return "有方向：前幾名都值得試，通常要混兩三位才像。"
-    return ("沒有明確符合的單一畫師（分數又低又平）。這張圖可能是多位畫師混出來的、LoRA 畫的，"
-            "或不是這個模型認得的畫風 —— 把前面一批都丟進實驗室試，比相信第一名有用。")
+        return "有方向：第一名多半就是（實測 99 張裡 95 張對），前幾名也值得試。"
+    return ("沒有明確符合的單一畫師（分數又低又平）。手繪作品這種情況第一名只有四成對；"
+            "模型不認識的畫師、AI 生成的圖、多位畫師混出來的畫風幾乎都落在這裡 —— "
+            "把前面一批都丟進實驗室試，比相信第一名有用。")
 
 
 def self_check(base: Path) -> dict:

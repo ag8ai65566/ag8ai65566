@@ -8074,8 +8074,10 @@ function buildLab() {
       <button class="ghost tiny" id="labpathgo">判斷這個資料夾</button>
     </div>
     <div class="note">同一種畫風的圖<b>放越多張越準</b>：每張圖都帶著自己的題材和構圖，很多張平均起來，題材互相抵銷，剩下的才是畫風。
-      實測（真實畫師作品）：單張認對畫師約七到八成；兩張九成以上；三張以上幾乎每次都對。3～10 張就夠，最多用 60 張（更多會平均抽樣）。
-      只看資料夾這一層，不看子資料夾。</div>
+      實測（模型沒看過的手繪作品，45 位畫師）：單張約七成認對，三到五張約八成；有名的畫師三張 94%、五張 97%。
+      3～10 張就夠，最多用 60 張（更多會平均抽樣）。只看資料夾這一層，不看子資料夾。<br>
+      <b>AI 生成的圖例外</b>：模型認不出它的提詞用了哪些畫師標籤（實測只有 5% 出現在前 5 名）。
+      檔案還留著提詞的話，這裡會直接讀出提詞寫的畫師；沒有的話，直接貼一批畫師，用下面「每位畫師畫一張」比畫風分數 —— 那一步對 AI 圖有用。</div>
     <div id="labset" style="margin-top:6px"></div>
     <div id="labmatches" style="margin-top:6px"></div>
 
@@ -8178,9 +8180,22 @@ async function labIdentify(file) {
 function labShowMatches(d) {
   const box = $('#labmatches');
   LAB.matches = d.matches || [];
-  box.innerHTML = `<div class="s">${esc(d.note)}</div>
+  // An AI picture that kept its settings names its artist tags in the prompt:
+  // read, not guessed - and the guessing below is weak on AI pictures.
+  const named = d.named || [];
+  const gen = typeof d.generated === 'number' ? d.generated : (d.generated ? 1 : 0);
+  const head = !gen ? '' : `<div class="banner tight" style="margin-bottom:6px">
+      <b>${typeof d.generated === 'number' ? `${gen} 張是 AI 生成的圖` : '這是 AI 生成的圖'}</b>（檔案裡留著生成參數）。
+      ${named.length ? '它的提詞直接寫了用哪些畫師標籤 —— 這是<b>讀出來的，精確</b>，比下面看圖猜的可靠得多。'
+        : '提詞裡沒有寫明畫師標籤（<code>artist:名字</code>、<code>by 名字</code>）。'}
+      下面「看圖認畫師」對 AI 圖不準（實測 NoobAI 圖，提詞用的畫師出現在前 5 名的只有 5%）；
+      要找 AI 圖的畫風，用「每位畫師畫一張」比畫風分數。</div>`;
+  const listed = !named.length ? '' : `<div class="s"><b>提詞裡寫的畫師標籤</b>${typeof d.generated === 'number' ? '（×幾張圖用了它）' : ''}：</div>
+    <div class="words" style="margin:4px 0 8px">${named.map((n) =>
+      `<label class="tag"><input type="checkbox" class="labm" value="${esc(n.tag)}" checked> ${esc(n.tag)}${n.count > 1 ? ` <span class="s">×${n.count}</span>` : ''}</label>`).join('')}</div>`;
+  box.innerHTML = head + listed + `<div class="s">${listed ? '<b>看圖猜的</b>（只給參考）：' : ''}${esc(d.note)}</div>
     <div class="words" style="margin-top:4px">${LAB.matches.map((m, i) =>
-      `<label class="tag" title="${m.zh ? esc(m.zh) + ' · ' : ''}相似度分數 ${m.p}"><input type="checkbox" class="labm" value="${esc(m.tag)}" ${i < 20 ? 'checked' : ''}> ${esc(m.tag)} <span class="s">${(m.p * 100).toFixed(1)}%</span></label>`).join('')}</div>
+      `<label class="tag" title="${m.zh ? esc(m.zh) + ' · ' : ''}相似度分數 ${m.p}"><input type="checkbox" class="labm" value="${esc(m.tag)}" ${i < 20 && !named.length ? 'checked' : ''}> ${esc(m.tag)} <span class="s">${(m.p * 100).toFixed(1)}%</span></label>`).join('')}</div>
     <div class="row" style="margin-top:4px;gap:6px"><button class="go tiny" id="labmadd">把勾的加進清單</button>
       <span class="s">分數是模型的把握，不是證據；低分的也可能混得出來。</span></div>`;
   $('#labmadd').onclick = () => {
@@ -8368,7 +8383,7 @@ function renderLabRun() {
       <span class="tag ${run.status === 'idle' ? 'done' : run.status === 'error' ? 'err' : 'run'}">${state}</span>
       <span class="s">${esc(run.message || '')}</span>
       <span class="s">單人 ${doneSolo}/${solo.length}${mixes.length ? ` · 組合 ${mixes.filter((e) => e.output).length}/${mixes.length}` : ''} · 種子 ${run.seed}</span></div>
-    <div class="s">測試提詞：${esc(run.prompt)}${scored ? ' · 百分比是跟目標的畫風相似度。參考值（量自真實作品）：同一位畫師的作品，目標是單張圖時約 60%、多張合併時約 75～80%；無關的畫師約 20%' : ''}</div>`;
+    <div class="s">測試提詞：${esc(run.prompt)}${scored ? ' · 百分比是跟目標的畫風相似度。參考值（模型沒看過的手繪作品實測）：同一位畫師的作品，目標是單張圖時平均約 59%、多張合併時約 72%；無關的畫師約 20～25%' : ''}</div>`;
   if (mixes.length) {
     html += `<h2>組合結果${scored ? '（最像的在前面）' : ''}</h2>` + mixes.slice(0, 60).map((e) => `
       <div class="row" style="margin-top:6px;align-items:flex-start;gap:8px">${labCell(e, false)}

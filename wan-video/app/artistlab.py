@@ -117,6 +117,43 @@ def parse(text: str) -> dict:
             "truncated": max(0, len(tags) - MAX_ARTISTS)}
 
 
+_NAMES_ARTIST = re.compile(r"^artist\s*:", re.I)
+_BY = re.compile(r"^by\s+", re.I)
+
+
+def prompt_artists(prompt: str, known: set[str] | None = None) -> list[str]:
+    """The artist tags a generation prompt names outright, in order.
+
+    Why this matters: measured on 151 NoobAI images from CivitAI (2026-11-27),
+    the style model put the prompt's own artist tags first for 1% of them and
+    in its top five for 5% - an AI picture made "in the style of" an artist
+    does not look enough like that artist's real work for it to say who. When
+    the file still carries its prompt, the tags are simply written there.
+
+    Only explicit forms count - `artist:name` (in any weighting syntax), and
+    `by name` when the style model knows the name - because a bare name cannot
+    be told apart from any other tag, and "by the window" is not an artist.
+    """
+    cleaned = _NAI_WEIGHT.sub("", str(prompt or "")).replace("::", ",")
+    out: list[str] = []
+    for token in _SPLIT.split(cleaned):
+        bare = token.strip().replace("\\(", "(").replace("\\)", ")").strip("{}[] 　")
+        while (match := _WRAPPED.match(bare)):
+            bare = match.group(1).strip()
+        if bare.startswith("(") and bare.endswith(")") and _NAMES_ARTIST.match(bare[1:]):
+            bare = bare[1:-1].strip()
+        if _NAMES_ARTIST.match(bare):
+            tag = normalise(bare)
+        elif _BY.match(bare) and known:
+            tag = normalise(bare)
+            tag = tag if tag in known else ""
+        else:
+            continue
+        if tag and tag not in out and tag not in kaloscope.WITHHELD:
+            out.append(tag)
+    return out
+
+
 def spellcheck(tags: list[str], known: list[str]) -> list[dict]:
     """Which of these the style model has heard of, and near misses for the rest.
 

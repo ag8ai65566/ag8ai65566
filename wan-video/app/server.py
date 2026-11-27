@@ -4884,6 +4884,12 @@ async def artistlab_identify(image: UploadFile, top: int = Form(30)) -> JSONResp
     base = _kaloscope_base()
     if base is None:
         raise HTTPException(400, "還沒下載「看圖認畫師」模型（169MB）。按下面的下載。")
+    # An AI picture that kept its settings says which artist tags made it -
+    # exactly, where the style model cannot (see artistlab.prompt_artists).
+    found = inspect_image.read_metadata(picture)
+    if stop := reverse.blocked_text(found.prompt):
+        raise HTTPException(400, "這張圖的提詞裡有未成年相關的詞（" + "、".join(stop)
+                            + "）。這個 app 不做這類內容。")
     here = tags.installed(config.MODELS_DIR)
     loop = asyncio.get_running_loop()
     if here:
@@ -4901,7 +4907,9 @@ async def artistlab_identify(image: UploadFile, top: int = Form(30)) -> JSONResp
     _prune_lab_targets()
     name = f"lab-target-{uuid.uuid4().hex[:10]}.png"
     picture.convert("RGB").save(config.STAGING_DIR / name, "PNG")
-    return JSONResponse({"matches": matches, "note": kaloscope.confidence(matches), "target": name})
+    named = artistlab.prompt_artists(found.prompt, set(kaloscope.labels(config.MODELS_DIR)))
+    return JSONResponse({"matches": matches, "note": kaloscope.confidence(matches), "target": name,
+                         "generated": found.source, "named": [{"tag": t, "count": 1} for t in named]})
 
 
 # Several pictures in one style, read as one. A folder takes a second or two a
@@ -4949,10 +4957,12 @@ def _refset_pool(state: dict) -> None:
     _prune_lab_targets()
     target = f"lab-target-{uuid.uuid4().hex[:10]}.json"
     kaloscope.write_target(config.STAGING_DIR / target, pooled["style"], [items[i]["name"] for i in keep])
+    named = sorted(state.get("named", {}).items(), key=lambda kv: (-kv[1], kv[0]))
     state["result"] = {
         "matches": pooled["matches"], "note": kaloscope.confidence(pooled["matches"]),
         "consistency": kaloscope.consistency(pooled), "pairwise": pooled["pairwise"],
-        "count": pooled["count"], "pictures": pictures, "target": target}
+        "count": pooled["count"], "pictures": pictures, "target": target,
+        "generated": state.get("generated", 0), "named": [{"tag": t, "count": c} for t, c in named]}
 
 
 def _refset_public(state: dict) -> dict:
@@ -4968,6 +4978,7 @@ async def _refset_run(state: dict, sources: list[tuple[str, Path]], scratch: Pat
     here = tags.installed(config.MODELS_DIR)
     tbase = tags.folder(config.MODELS_DIR, here[0]) if here else None
     refused: list[tuple[str, list[str]]] = []
+    known = set(kaloscope.labels(config.MODELS_DIR))
     try:
         for name, path in sources:
             if state["status"] != "running":            # replaced by a newer set
@@ -4981,7 +4992,15 @@ async def _refset_run(state: dict, sources: list[tuple[str, Path]], scratch: Pat
                 state["skipped"].append({"name": name, "why": "讀不出來（不是圖片、檔案壞了或太大）"})
                 state["done"] += 1
                 continue
-            if tbase is not None:
+            found = inspect_image.read_metadata(picture)
+            said = reverse.blocked_text(found.prompt)
+            if said:
+                refused.append((name, said))
+            elif found.source:
+                state["generated"] += 1
+                for tag in artistlab.prompt_artists(found.prompt, known):
+                    state["named"][tag] = state["named"].get(tag, 0) + 1
+            if tbase is not None and not said:
                 guess = await loop.run_in_executor(None, tags.describe, picture, tbase)
                 if stop := reverse.blocked(guess):
                     # The folder is refused either way. The rest is still
@@ -5073,7 +5092,8 @@ async def artistlab_references(images: list[UploadFile] = File(default=[]), path
         sources.append((name, saved))
     state = {"id": set_id, "created": time.time(), "status": "running", "done": 0,
              "total": len(sources), "found": found, "message": "", "skipped": [], "items": [],
-             "names": [], "excluded": set(), "top": max(5, min(int(top), 100)), "result": {}}
+             "names": [], "excluded": set(), "top": max(5, min(int(top), 100)), "result": {},
+             "generated": 0, "named": {}}
     REFSETS[set_id] = state
     task = asyncio.create_task(_refset_run(state, sources, scratch))
     _background.add(task)

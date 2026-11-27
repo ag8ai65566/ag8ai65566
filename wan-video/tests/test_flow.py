@@ -8923,6 +8923,16 @@ async def test_artistlab() -> None:
     check(artistlab.novelai_for([["hiten_(hitenkei)", 1.0], ["wlop", 1.2]])
           == "artist:hiten (hitenkei), 1.2::artist:wlop ::", "…and NovelAI's numeric emphasis for export")
 
+    section("繪師實驗室: artist tags written in a prompt")
+    said = artistlab.prompt_artists(
+        "masterpiece, artist:yoneyama mai, (artist:wanke:1.1), 1.2::artist:hiten (hitenkei) ::, "
+        "{{artist:ciloranko}}, (artist:ask \\(askzy\\)), by wlop, by the window, artist:kedama_milk, 1girl",
+        {"wlop"})
+    check(said == ["yoneyama_mai", "wanke", "hiten_(hitenkei)", "ciloranko", "ask_(askzy)", "wlop"],
+          f"every weighting syntax is read; 'by' only for names the model knows; withheld artists dropped ({said})")
+    check(artistlab.prompt_artists("1girl, solo, wlop, smile", {"wlop"}) == [],
+          "a bare name is not taken for an artist tag - it could be any tag")
+
     section("繪師實驗室: blends")
     rng = _random.Random(3)
     first = artistlab.first_generation(["a", "b", "c", "d"], (2, 3), 5, {"a": .9, "b": .8, "c": .2, "d": .1}, rng)
@@ -9123,6 +9133,28 @@ async def test_artistlab() -> None:
         found = json.loads((await server.artistlab_identify(upload, 30)).body)
         check(found["matches"][0]["tag"] == "redwash" and (config.STAGING_DIR / found["target"]).is_file(),
               "看圖認畫師 returns candidates and keeps the picture as the target")
+        check(found["generated"] == "" and found["named"] == [],
+              "a picture with no generation data is not called AI and names no one")
+        from PIL.PngImagePlugin import PngInfo
+        info = PngInfo()
+        info.add_text("parameters", "masterpiece, (artist:bluewash:1.2), artist:greywash, by the window, 1girl\n"
+                                    "Steps: 20, Sampler: Euler a, CFG scale: 5, Seed: 1, Size: 64x64")
+        made = io.BytesIO()
+        PILImage.new("RGB", (64, 64), (250, 20, 20)).save(made, "PNG", pnginfo=info)
+        ai_upload = pytypes.SimpleNamespace(read=lambda: _coro(made.getvalue()), filename="ai.png")
+        ai = json.loads((await server.artistlab_identify(ai_upload, 30)).body)
+        check(ai["generated"] == "a1111" and [n["tag"] for n in ai["named"]] == ["bluewash", "greywash"],
+              "an AI picture that kept its prompt names its artist tags exactly ('by the window' is not one)")
+        young = PngInfo()
+        young.add_text("parameters", "loli, artist:bluewash\nSteps: 20, Seed: 1, Size: 64x64")
+        bad = io.BytesIO()
+        PILImage.new("RGB", (64, 64)).save(bad, "PNG", pnginfo=young)
+        try:
+            await server.artistlab_identify(pytypes.SimpleNamespace(read=lambda: _coro(bad.getvalue()),
+                                                                    filename="x.png"), 30)
+            check(False, "a prompt about a minor is refused")
+        except HTTPException as exc:
+            check("未成年" in str(exc.detail), "a prompt about a minor is refused before anything is read")
         for body, needle, label in (
                 ({"base": {"model": "pony"}, "artists": ["a"]}, "不吃畫師", "a model that ignores artist tags"),
                 ({"base": {"model": "noobai"}, "artists": []}, "空的", "an empty list"),
@@ -9290,6 +9322,20 @@ async def test_artistlab() -> None:
         check(state["id"] not in server.REFSETS
               and not list(config.STAGING_DIR.glob(f"lab-set-{state['id']}-*")),
               "…and an old one goes with its thumbnails")
+
+        prompted = TMP / "ai refs"
+        prompted.mkdir(parents=True, exist_ok=True)
+        for i, text in enumerate(("artist:redwash, artist:greywash, 1girl", "(artist:redwash:1.1), smile",
+                                  "1girl, no artist named")):
+            meta = PngInfo()
+            meta.add_text("parameters", text + "\nSteps: 20, Seed: 1, Size: 40x60")
+            PILImage.new("RGB", (40, 60), (240, 20 + i, 20)).save(prompted / f"ai{i}.png", pnginfo=meta)
+        PILImage.new("RGB", (40, 60), (240, 30, 20)).save(prompted / "drawn.png")
+        ai_set = await analysed(path=str(prompted))
+        check(ai_set["status"] == "done" and ai_set["generated"] == 3,
+              "a folder reports how many of its pictures are AI-generated")
+        check(ai_set["named"] == [{"tag": "redwash", "count": 2}, {"tag": "greywash", "count": 1}],
+              "…and every artist tag their prompts name, with how many pictures used it")
 
         tags.installed = lambda _d: ["wd-vit-v3"]
         calls = {"style": 0}
