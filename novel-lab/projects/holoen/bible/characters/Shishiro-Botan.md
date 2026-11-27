@@ -265,7 +265,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Usada Kensetsu", "InuTakaShishiRam", "Apex Predators": secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「らいおん♪」 and 「それじゃ、またね～」: official profile (English "La-lion♪", "Well then, cya~"); the 「ららーいおん」 jingle — secondary (ホロライブ非公式wiki（seesaawiki）「獅白ぼたん」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3> (checked 2026-10-31)).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (U33SciUF0WQ, KtzsKY807hY), Korone (Xq43wV29LW8, Wc1kJDN-xtQ).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Fubuki (U33SciUF0WQ, KtzsKY807hY), Korone (Xq43wV29LW8, Wc1kJDN-xtQ).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Shishiro Botan): official profile and

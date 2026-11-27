@@ -29,8 +29,8 @@ sw_section: Characters
 > audio was machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
 > listening verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 「こんばんみぉーん！大神ミオだよ～！」 ("Hellooowl! It is Ookami Mio!", official): a black-haired wolf girl who
@@ -301,8 +301,7 @@ hololive GAMERS (Shirakami Fubuki, Nekomata Okayu, Inugami Korone): her unit; "W
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete hololive GAMERS):** official profiles, gallery and music pages,
-  archive metadata and a two-model ASR check (MI20). GPT review pending (the Codex login was blocked by the session's
-  permission system); no GPT draft, review or verification yet.
+  archive metadata and a two-model ASR check (MI20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. The exact start date of #朝ミオ (the first-anniversary episode is dated February 2022).

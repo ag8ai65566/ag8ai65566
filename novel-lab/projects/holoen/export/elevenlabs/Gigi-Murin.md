@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Gigi Murin
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `ea80b47ccab33d11dfc7bc239ab647f92fca6a784ca9002eb8c0c7b87a025fe1` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `ea80b47ccab33d11dfc7bc239ab647f92fca6a784ca9002eb8c0c7b87a025fe1` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); Gemini Neon review pending
 > Built from `bible/characters/Gigi-Murin.md` (2026-10-01). Original designed voice matched only to register
 > and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Gigi is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

@@ -1,11 +1,11 @@
-# Cohort audit: gamers (Fubuki, Mio, Korone, hololive GAMERS; Claude self-check 2026-11-27; GPT review pending)
+# Cohort audit: gamers (Fubuki, Mio, Korone, hololive GAMERS; Claude self-check 2026-11-27; Gemini Neon review pending)
 
 **What this file is.** The other cohort audits are GPT cross-card audits merged by Claude. This one is not: the
 GAMERS cards were added on the author's order of 2026-11-27 ("追加人物, 把gamers補完"), and the Codex login that the
 framework uses for GPT was blocked in this session, so Claude researched, wrote and checked them alone. The file
 records the checks Claude ran and what they found, so that V11, V12, V14 and V15 have a written review to point to.
-It does not replace the GPT audit; run `lab.py` cohort audit "gamers" with GPT when the login is available, and merge
-its findings here. Nekomata Okayu stays in the "jp" cohort, where her card was first audited.
+On 2026-11-27 the author decided not to use the Codex/GPT audit and to have Gemini Neon (desktop) re-review the
+work instead; the packets are in `research/qa/external-review/`, and Gemini's findings will be merged here. Nekomata Okayu stays in the "jp" cohort, where her card was first audited.
 
 Scope: `bible/characters/Shirakami-Fubuki.md`, `Ookami-Mio.md`, `Inugami-Korone.md`, `bible/world/hololive-GAMERS.md`,
 their performance sheets, `research/audio-check/gamers.md`, and the GAMERS lines added to existing cards (Okayu, Ayame,
@@ -37,7 +37,7 @@ Bae; Groups on Okayu and Marine).
 
 ## Open items
 
-1. GPT cohort audit (blocked login).
+1. Gemini Neon re-review (author decision 2026-11-27; packets A and B in `research/qa/external-review/`).
 2. A spoken check of Fubuki's 「こんこんきーつね」 and of Korone's greeting outside her morning show (both are covered by
    music or game audio in the checked windows; the cards rely on the official profiles).
 3. Reveal dates for the undated gallery outfits; what Korone's 2022 "ambassador" title refers to.

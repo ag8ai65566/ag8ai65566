@@ -304,10 +304,10 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "By vibes" (「ノリで相手をぶっ倒したいと思いまーす」): one sampled game opening. "Gochi gochi!": secondary-reported audience response. Repeated 「にゃ」: documented.
 - "TakoNeko", "Dorobo Kensetsu": secondary references. The Gigi banter: secondary clip metadata.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「完食〜おかゆ〜！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-26「新しい朝がきた～～ 希望の朝だ～～～～～～！🌤」 <https://www.youtube.com/watch?v=ukYZ4iMSTAg> (checked 2026-10-31) at 3728 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-08「寝起き声低許して雑談」 <https://www.youtube.com/watch?v=QpuVXgtsUAs> (checked 2026-10-31) at 6814 s) and ホロライブ非公式wiki（seesaawiki）「猫又おかゆ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6> (checked 2026-10-31).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 - GAMERS cohort (2026-11-27): NYANGUCORN added to Groups (official music credit, "KemomomomomoMof！," 2026-04-02, https://hololive.hololivepro.com/en/music/737/).
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): NYANGUCORN's original (official music 737) and the Mio cover (grN8TN-eLk4) added to Relationships and the map.
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): NYANGUCORN's original (official music 737) and the Mio cover (grN8TN-eLk4) added to Relationships and the map.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

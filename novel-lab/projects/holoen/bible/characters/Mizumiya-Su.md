@@ -30,8 +30,8 @@ sw_section: Characters
 > on titles. Personal remarks are not quoted or summarized here. The audio was machine-transcribed and acoustically
 > measured; transcripts were reviewed in context, without independent listening verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 "Is your Su-charge at 100%?" (official English profile wording): FLOW GLOW's tiny publicity manager, a
@@ -247,8 +247,7 @@ FLOW GLOW (Isaki Riona, Koganei Niko, Rindo Chihaya, Kikirara Vivi): her unit. K
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music
-  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (SU20). GPT review pending (the
-  Codex login was blocked by the session's permission system); no GPT draft, review or verification yet.
+  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (SU20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. A 2026 chat window should be checked to confirm her current manner (the two windows checked are from 2025).

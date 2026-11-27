@@ -29,8 +29,8 @@ sw_section: Characters
 > audio was machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
 > listening verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 「ぉぁょ~！ゆびゆび～」 ("Ello! Fingers! Give me your fingers!", official): a dog from a city bakery who plays games
@@ -295,8 +295,7 @@ hololive GAMERS (Shirakami Fubuki, Ookami Mio, Nekomata Okayu): her unit. Nekoma
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete hololive GAMERS):** official profiles, gallery and music pages,
-  archive metadata and a two-model ASR check (KO20). GPT review pending (the Codex login was blocked by the session's
-  permission system); no GPT draft, review or verification yet.
+  archive metadata and a two-model ASR check (KO20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. Her spoken greeting outside the morning show was not captured in the two windows (game audio and music cover

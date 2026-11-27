@@ -282,7 +282,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Singing stream with Minato Aqua and the 2025 birthday-live guest spot (AZKi): secondary records. Okayu items: secondary accounts and archived metadata. Marine off-collabs: archived metadata.
 - r02 status marks: Minato Aqua graduated on 2024-08-28: Anime Corner <https://animecorner.me/hololives-minato-aqua-to-graduate-on-august-28/> (checked 2026-11-27).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Mio's mochi-pounding off-collab (fQaE6-usUjg).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Mio's mochi-pounding off-collab (fQaE6-usUjg).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (MC1), wiki (MC2, by section),

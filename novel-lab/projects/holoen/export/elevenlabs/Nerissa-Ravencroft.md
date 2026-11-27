@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Nerissa Ravencroft
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `f6237377c8289169d21d44ec7e4ca531c34586ffca6f2d95d8ca03dd7372291f` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `f6237377c8289169d21d44ec7e4ca531c34586ffca6f2d95d8ca03dd7372291f` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); Gemini Neon review pending
 > Built from the Nerissa character file (`runs/20260930-2334-character-Nerissa-Ravencroft`, 2026-09-30;
 > promoted 2026-10-01). Original designed voice matched only to register and energy; never clone
 > or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works Guidelines).

@@ -1,10 +1,11 @@
-# Cohort audit: flowglow (Riona, Niko, Su, Chihaya, FLOW GLOW; Claude self-check 2026-11-27; GPT review pending)
+# Cohort audit: flowglow (Riona, Niko, Su, Chihaya, FLOW GLOW; Claude self-check 2026-11-27; Gemini Neon review pending)
 
 **What this file is.** The other cohort audits are GPT cross-card audits merged by Claude. This one is not: the
 FLOW GLOW cards were added on the author's order of 2026-11-27, and the Codex login that the framework uses for GPT
 was blocked in this session, so Claude researched, wrote and checked them alone. The file records the checks Claude
-ran and what they found, so that V11, V12, V14 and V15 have a written review to point to. It does not replace the GPT
-audit; run `lab.py` cohort audit "flowglow" with GPT when the login is available, and merge its findings here.
+ran and what they found, so that V11, V12, V14 and V15 have a written review to point to. On 2026-11-27 the
+author decided not to use the Codex/GPT audit and to have Gemini Neon (desktop) re-review the work instead; the
+packets are in `research/qa/external-review/`, and Gemini's findings will be merged here.
 
 Scope: `bible/characters/Isaki-Riona.md`, `Koganei-Niko.md`, `Mizumiya-Su.md`, `Rindo-Chihaya.md`,
 `bible/world/FLOW-GLOW.md`, their performance sheets, `research/audio-check/flowglow.md`, and the FLOW GLOW lines
@@ -33,6 +34,6 @@ added to ten existing cards (Calli, Nerissa, Marine, Lamy, AZKi, Koyori, Okayu, 
 
 ## Open items
 
-1. GPT cohort audit (blocked login).
+1. Gemini Neon re-review (author decision 2026-11-27; packets A and B in `research/qa/external-review/`).
 2. A 2026 chat window for Su and for Chihaya (their checked windows are from August 2025).
 3. Release dates for "逆様" and "クリームで会いにいけますか"; reveal dates for the Japanese-style outfits.

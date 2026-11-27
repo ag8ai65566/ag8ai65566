@@ -290,7 +290,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 status marks: Murasaki Shion graduated on 2025-04-26: Anime Corner <https://animecorner.me/hololive-vtuber-murasaki-shion-to-graduate-on-april-26/> (checked 2026-11-27).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつなきりー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「百鬼あやめ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1> (checked 2026-10-31); ホロライブ非公式wiki「百鬼あやめ【語録】」：口癖（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1%A1%DA%B8%EC%CF%BF%A1%DB> (checked 2026-10-31)).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): AyaFubuMi originals (official music 383, 705, 864); #鬼ヶ島コンビ and the ReGLOSS watch-along (Korone channel myqzgEEnV1I, 1Q48E6vFA6Y).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): AyaFubuMi originals (official music 383, 705, 864); #鬼ヶ島コンビ and the ReGLOSS watch-along (Korone channel myqzgEEnV1I, 1Q48E6vFA6Y).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

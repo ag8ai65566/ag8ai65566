@@ -262,7 +262,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Ohamassuru" and 「まぁ色々ありましたな」: shared ASR spans. "Konbanmassuru~": secondary transcription (the second model heard 「こんばんは」).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつまっする〜」 — ホロライブ非公式wiki（seesaawiki）「白銀ノエル」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB> (checked 2026-10-31) and two-model ASR 「では、おつまっする皆さん」 (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-18「【朝活雑談】このあとホロライブ甲子園2026本戦！！ドキドキだけどさんまありまっする💪🔥【白銀ノエル/ホロライブ】」 <https://www.youtube.com/watch?v=O3JHLJzRtGY> (checked 2026-10-31) at 4107 s); 「牛丼は〜？」→「飲み物ー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「白銀ノエル」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB> (checked 2026-10-31)).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Korone (VNJNilMuHZk), Fubuki (fQmhewlBr80).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Korone (VNJNilMuHZk), Fubuki (fQmhewlBr80).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Shirogane Noel): official profile and

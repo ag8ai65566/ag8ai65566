@@ -1,11 +1,11 @@
 # ElevenLabs v4 Performance Sheet: Shirakami Fubuki
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `a56948f6a420ca7fb1720a2467720b41aaefa4911b9adc54f556f9d843863d23` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `a56948f6a420ca7fb1720a2467720b41aaefa4911b9adc54f556f9d843863d23` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); Gemini Neon review pending
 > Built from `bible/characters/Shirakami-Fubuki.md` (2026-11-27). Original designed voice matched only to register
 > and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Fubuki is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
 > (author decision 2026-10-04 for the JP members): spoken lines are Japanese script; romaji and glosses are reading
-> aids, not spoken. Guide: `novel-lab/docs/elevenlabs-v4.md`. GPT review pending (Claude-only sheet, 2026-11-27).
+> aids, not spoken. Guide: `novel-lab/docs/elevenlabs-v4.md`. Gemini Neon review pending (Claude-only sheet, 2026-11-27; the author dropped the GPT review).
 
 ## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, bright, clear, high voice; quick, lively and well organized like a cheerful MC; dropping into a gruff, comic register for a joke; warm and sincere when she gives advice; deadpan for a game over, then laughing."

@@ -299,7 +299,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Register: sample observations, not synthesis targets. No regional accent assigned (no in-scope listening check).
 - "Ope?!": a proposed spoken use of a written expression; delivery unverified.
 - Marine as an oshi: secondary. "AutoTune": secondary pair name.
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record

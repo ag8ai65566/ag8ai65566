@@ -282,9 +282,9 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - The reading はっはー for 「ﾊｯﾊｰ↑」 is provisional. Flustered laughter and horror shrieks: design choices.
 - "Lui-nee", "Dorobo Kensetsu": secondary references. "Onikan", "InuTakaShishiRam": archived titles.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「こんルイルイ」 after 「皆さん、待っ鷹ね？」 — secondary (ホロライブ非公式wiki（seesaawiki）「鷹嶺ルイ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C2%EB%CE%E6%A5%EB%A5%A4> (checked 2026-10-31); ホロライブ非公式wiki「鷹嶺ルイ【語録】」：口癖（次要來源） <https://seesaawiki.jp/hololivetv/d/%C2%EB%CE%E6%A5%EB%A5%A4%A1%DA%B8%EC%CF%BF%A1%DB> (checked 2026-10-31)).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (AnhxVnLpGR0, 80Se1st9Zyk, YT4yL2_3-Rw, 7cseBNYCrkM), Mio (UX52XaorEfY, Rjwd8WGH2kY), Korone (Wc1kJDN-xtQ, 4LDafBjiNdg).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Fubuki (AnhxVnLpGR0, 80Se1st9Zyk, YT4yL2_3-Rw, 7cseBNYCrkM), Mio (UX52XaorEfY, Rjwd8WGH2kY), Korone (Wc1kJDN-xtQ, 4LDafBjiNdg).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

@@ -15,9 +15,9 @@ sw_section: Worldbuilding
 > is not listed as a current separate affiliation (as on Vivi's card). Nothing about the performers behind the
 > avatars: private-life information is outside scope and is not recorded here.
 >
-> **GPT review pending.** This card was researched and written by Claude alone (2026-11-27): the Codex login that
-> the framework uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification
-> have not happened yet.
+> **External review pending (Gemini Neon).** This card was researched and written by Claude alone (2026-11-27). The
+> author decided on 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending
+> (research/qa/external-review/).
 
 ## One-line Concept
 A five-girl hip-hop and pop unit that debuted together: a stoic leader who hates losing, a jokester who will
@@ -219,8 +219,7 @@ A silver side ponytail and a crown-topped pink microphone; long blonde hair, rou
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete FLOW GLOW):** official profiles, the official FLOW GLOW page,
-  the debut announcement, the music catalog and the archive. GPT review pending (the Codex login was blocked by the
-  session's permission system); no GPT draft, review or verification yet.
+  the debut announcement, the music catalog and the archive. Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. The release dates of "逆様" and "クリームで会いにいけますか" are not established here.

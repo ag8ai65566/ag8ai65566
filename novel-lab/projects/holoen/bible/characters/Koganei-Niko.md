@@ -30,8 +30,8 @@ sw_section: Characters
 > machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
 > listening verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 "If you can't bring yourself to a smile, just say my name!" (official English profile wording): FLOW GLOW's
@@ -247,12 +247,11 @@ FLOW GLOW (Isaki Riona, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit. Is
 - "LYRA": the mix engineer's credits (on Calli's and Elizabeth's cards). "Magia," duets and collabs: archived titles;
   "逆様": the official video listing (undated here).
 - Outfits: Claude's reading of the official gallery images.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki's Phasmophobia (yVdTbPCJytw) and #フブミオ大予想 (iJpIGu5HuGY).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Fubuki's Phasmophobia (yVdTbPCJytw) and #フブミオ大予想 (iJpIGu5HuGY).
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music
-  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (NK20). GPT review pending (the
-  Codex login was blocked by the session's permission system); no GPT draft, review or verification yet.
+  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (NK20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. The release date of "逆様" and the reveal date of the Japanese-style outfit are not established here.

@@ -30,8 +30,8 @@ sw_section: Characters
 > machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
 > listening verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 "I'll do what I like and live how I want to!" (official English profile wording): FLOW GLOW's leader, a stoic,
@@ -271,12 +271,11 @@ FLOW GLOW (Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit, w
   published on a channel does not establish who performed the motion.
 - Outfits: Claude's reading of the official gallery images; the New Year outfit's identification rests on the
   gallery image and the reveal-stream silhouette.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Korone (QaGy1nHjRIQ, sze_5XnmD9w), Fubuki (cWjY92rdma4, iJpIGu5HuGY).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Korone (QaGy1nHjRIQ, sze_5XnmD9w), Fubuki (cWjY92rdma4, iJpIGu5HuGY).
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music
-  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (RI20). GPT review pending (the
-  Codex login was blocked by the session's permission system); no GPT draft, review or verification yet.
+  pages, the official FLOW GLOW page, archive metadata and a two-model ASR check (RI20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. The release date of "逆様" is not established here.

@@ -279,10 +279,10 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Shukkō!" and 「一回落ち着こうよ」: shared ASR spans.
 - "PekoMari": secondary pair name. MVP with Pekora and Vivi: an archived 2026 performance record. "#頭ピンク組": archived titles.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「それでは行きますよー、出航ー！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-29「【#ホロ甲2026】3年目新入生入学！！キャAに転生ふたり…レギュラーはどうなる！？【ホロライブ/宝鐘マリン】」 <https://www.youtube.com/watch?v=hiftM9MxlCs> (checked 2026-10-31) at 19666 s); 「出航ー！」→「ヨーソロー！」 — ホロライブ非公式wiki（seesaawiki）「宝鐘マリン」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%CA%F5%BE%E2%A5%DE%A5%EA%A5%F3> (checked 2026-10-31).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 - GAMERS cohort (2026-11-27): BABACORN (with Shirakami Fubuki) added to Groups: archived #BABACORN title on Fubuki's channel (pmMqFJm9bHc, 2023-03-16).
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (pmMqFJm9bHc, LR9JXY2c7xI, U33SciUF0WQ; official music 839) and Korone (x3V1BH5tT-4).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Fubuki (pmMqFJm9bHc, LR9JXY2c7xI, U33SciUF0WQ; official music 839) and Korone (x3V1BH5tT-4).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Houshou Marine): official profile and

@@ -259,7 +259,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - 「いただきまーす」: shared ASR span (folded into the opening entry). Lui reining her in: secondary accounts.
 - r02 status marks: Amane Kanata graduated on 2025-12-27: her announcement <https://x.com/amanekanatach/status/1996849896578527269>; Dengeki Online <https://dengekionline.com/article/202512/59482> (checked 2026-11-27).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「ではな〜」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-11-21「【 雑談 】ねぇねぇおはなししよ【ホロライブ/沙花叉クロヱ】」 <https://www.youtube.com/watch?v=Myw1OMa2wvQ> (checked 2026-10-31) at 15354 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-06-19「【 ハースストーン 】バトグラ雑談！ねぇアプデの新要素めちょおもろいから皆やって！【ホロライブ/沙花叉クロヱ】」 <https://www.youtube.com/watch?v=A67M6BdsSBQ> (checked 2026-10-31) at 12366 s).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record

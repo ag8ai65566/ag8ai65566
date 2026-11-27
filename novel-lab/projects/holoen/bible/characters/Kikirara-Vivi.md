@@ -258,9 +258,9 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Opening 「ん～～ッヴィヴィ～！！！」 as written in archived stream titles; 「お金取るで」: shared ASR span; fan name "Vivid": secondary.
 - Goals (cosmetics collaborations, concerts with her own songs, smiles for fans): secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「せーの！（ん〜）ヴィヴィー！」 as the final greeting — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-11「【#ホロドリ 】おはよう！朝のホロドリ！新エリアクリア目指す！【#綺々羅々ヴィヴィ #hololive  #FLOWGLOW】」 <https://www.youtube.com/watch?v=1jfrtUlxO0E> (checked 2026-10-31) at 5801 s); 「せーの！んーーヴィヴィ〜！」 and 「おつヴィヴィ〜！」 — secondary (ホロライブ非公式wiki（seesaawiki）「綺々羅々ヴィヴィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3> (checked 2026-10-31)).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Korone's SPAGHET stream (LriXEkMQGAc).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Korone's SPAGHET stream (LriXEkMQGAc).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Kikirara Vivi): official profile and

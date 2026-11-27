@@ -30,8 +30,8 @@ sw_section: Characters
 > machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent listening
 > verification.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session, so the blind GPT draft, cross-review and verification have not happened.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 「こんこんきーつね！白上フブキです！」 ("Good foxy day! I'm Shirakami Fubuki!", official): a white-haired,
@@ -329,8 +329,7 @@ hololive GAMERS (Ookami Mio, Nekomata Okayu, Inugami Korone): her unit; her "ワ
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete hololive GAMERS):** official profiles (with the Q&A), gallery and
-  music pages, archive metadata and a two-model ASR check (FB20). GPT review pending (the Codex login was blocked by
-  the session's permission system); no GPT draft, review or verification yet.
+  music pages, archive metadata and a two-model ASR check (FB20). Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. Her spoken 「こんこんきーつね」 was not captured by both models in the checked windows (the openings are partly

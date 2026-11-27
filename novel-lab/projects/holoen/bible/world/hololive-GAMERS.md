@@ -13,8 +13,8 @@ sw_section: Worldbuilding
 > 2026-10-21). Nothing about the performers behind the avatars: private-life information is outside scope and is not
 > recorded here.
 >
-> **GPT review pending.** Researched and written by Claude alone (2026-11-27): the Codex login that the framework
-> uses for GPT was blocked in this session.
+> **External review pending (Gemini Neon).** Researched and written by Claude alone (2026-11-27). The author decided on
+> 2026-11-27 not to use the Codex/GPT review; a re-review by Gemini Neon (desktop) is pending (research/qa/external-review/).
 
 ## One-line Concept
 hololive's gaming unit of four animal-eared girls: a white otaku fox, a black-haired wolf who haunts shrines, a
@@ -164,7 +164,7 @@ A white fox girl with a black-tipped tail, a white off-shoulder sailor top and a
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete hololive GAMERS):** official profiles, archive metadata and news
-  reports. GPT review pending (the Codex login was blocked by the session's permission system).
+  reports. Codex/GPT review dropped by the author (2026-11-27); a re-review by Gemini Neon (desktop) is pending.
 
 ## Open Questions
 1. The exact date of the 2024 Yoyogi festival and of the formation-anniversary 3D live are not pinned here.

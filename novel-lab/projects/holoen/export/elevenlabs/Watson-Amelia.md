@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Watson Amelia
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `3f00f76b902e348656716e5699ccd5e08ebf4b5721c6a7742136049b058bdbd9` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `3f00f76b902e348656716e5699ccd5e08ebf4b5721c6a7742136049b058bdbd9` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); Gemini Neon review pending
 > Built from `bible/characters/Watson-Amelia.md` (2026-09-30). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Ame is an affiliate since 2024-09-30. Guide: `novel-lab/docs/elevenlabs-v4.md`.

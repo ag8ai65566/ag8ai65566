@@ -1,11 +1,11 @@
 # ElevenLabs v4 Performance Sheet: Inugami Korone
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `cf8f32d96cf5bd7d4f5005175b3fe6cba398dec1ad43a89cb53af625471901c5` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `cf8f32d96cf5bd7d4f5005175b3fe6cba398dec1ad43a89cb53af625471901c5` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); Gemini Neon review pending
 > Built from `bible/characters/Inugami-Korone.md` (2026-11-27). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Korone is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
 > (author decision 2026-10-04 for the JP members): spoken lines are Japanese script; romaji and glosses are reading
-> aids, not spoken. Guide: `novel-lab/docs/elevenlabs-v4.md`. GPT review pending (Claude-only sheet, 2026-11-27).
+> aids, not spoken. Guide: `novel-lab/docs/elevenlabs-v4.md`. Gemini Neon review pending (Claude-only sheet, 2026-11-27; the author dropped the GPT review).
 
 ## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, high, bright, bouncy voice; drowsy and drawling in the morning; quick, playful and repetitive when tension builds; loud and triumphant when she wins; screaming and laughing through horror; warm and content when she wraps up."

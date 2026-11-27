@@ -270,9 +270,9 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - 「それでは続いてはこちら」 and 「こよりちゃんでございます」: shared ASR spans.
 - Her giggle was heard by the first ASR model only; laughs are design choices.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつこよさまでした！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-27「【雑談】ねぽっくす打ち上げ裏話&デジモンの話とか！【博衣こより/ホロライブ】」 <https://www.youtube.com/watch?v=QTUZgrGymlc> (checked 2026-10-31) at 10575 s); 「おつこよ〜」 and the call and response — secondary (ホロライブ非公式wiki（seesaawiki）「博衣こより」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%EE%B0%E1%A4%B3%A4%E8%A4%EA> (checked 2026-10-31)).
-- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, Gemini Neon review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (cFwsRVbUQaQ, 8dZ9atjf4WA, KtzsKY807hY, Rfq9c8h3LPY), Korone (hNqFWgDcvXM).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): Fubuki (cFwsRVbUQaQ, 8dZ9atjf4WA, KtzsKY807hY, Rfq9c8h3LPY), Korone (hNqFWgDcvXM).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

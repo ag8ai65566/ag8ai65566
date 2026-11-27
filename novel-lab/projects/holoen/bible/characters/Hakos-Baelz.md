@@ -366,7 +366,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Cori Malliope" and Mio and Ollie as joking "moms": secondary references.
 - "Straight woman" in her generation's chaos; the BaeRyS routine's origin in a Minecraft bento exchange: fan references.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
-- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): the official music entry for "BITE! KAMU! BITE!" (354).
+- GAMERS ties (author order 2026-11-27; Claude only, Gemini Neon review pending): the official music entry for "BITE! KAMU! BITE!" (354).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hakos Baelz; Tsukumo Sana is not
